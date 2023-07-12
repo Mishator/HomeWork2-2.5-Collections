@@ -38,7 +38,14 @@ public class EmployeeService {
     }
 
     public Employee remove(String firstName, String lastName) {
-        return null;
+        Employee employeeForRemove = new Employee(firstName, lastName);
+
+        if (!employees.contains(employeeForRemove)) {
+            throw new EmployeeNotFoundException("Такого сотрудника нет");
+        }
+
+        employees.remove(employeeForRemove);
+        return employeeForRemove;
     }
 
     public List<Employee> getAll() {
