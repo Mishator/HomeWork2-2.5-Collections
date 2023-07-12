@@ -32,7 +32,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/all")
-    public Map<Integer, List<Employee>> employeesByDepartment() {
-        return departmentService.employeesByDepartment();
+    public Map<Integer, List<Employee>> employeesByDepartment(@RequestParam(required = false) Integer departmentId) {
+        return departmentService.employeesByDepartment(departmentId);
     }
 }
