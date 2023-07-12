@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/departments")
 public class DepartmentController {
@@ -26,5 +29,10 @@ public class DepartmentController {
     @GetMapping("/min-salary")
     public Employee withMinSalary(@RequestParam Integer departmentId) {
         return departmentService.withMinSalary(departmentId);
+    }
+
+    @GetMapping("/all")
+    public Map<Integer, List<Employee>> employeesByDepartment() {
+        return departmentService.employeesByDepartment();
     }
 }

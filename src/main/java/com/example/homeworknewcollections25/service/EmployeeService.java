@@ -20,7 +20,7 @@ public class EmployeeService {
         employees.add(new Employee("Александр", "Кержаков", 1, 50000));
         employees.add(new Employee("Владислав", "Радимов", 1, 75000));
         employees.add(new Employee("Сергей", "Семак", 2, 86000));
-        employees.add(new Employee("Вячеслав", "Малафеев", 3, 98000));
+        employees.add(new Employee("Вячеслав", "Малафеев", 2, 98000));
         employees.add(new Employee("Златан", "Ибрагимович", 4, 155999));
     }
 

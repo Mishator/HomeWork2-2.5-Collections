@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class DepartmentService {
@@ -17,18 +20,26 @@ public class DepartmentService {
     }
 
     public Employee withMaxSalary(Integer departmentId) {
-        List<Employee> employees = employeeService.getAll();
-        return employees.stream()
-                .filter(e -> e.getDepartmentId() == departmentId)
+        return streamByDepartment(departmentId)
                 .max(Comparator.comparing(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("Сотрудник не найден"));
     }
 
     public Employee withMinSalary(Integer departmentId) {
-        List<Employee> employees = employeeService.getAll();
-        return employees.stream()
-                .filter(e -> e.getDepartmentId() == departmentId)
+        return streamByDepartment(departmentId)
                 .min(Comparator.comparing(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("Сотрудник не найден"));
+    }
+
+    private Stream<Employee> streamByDepartment(Integer departmentId) {
+        List<Employee> employees = employeeService.getAll();
+        return employees.stream()
+                .filter(e -> e.getDepartmentId() == departmentId);
+    }
+
+    public Map<Integer, List<Employee>> employeesByDepartment() {
+        List<Employee> employees = employeeService.getAll();
+        return employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartmentId, Collectors.toList()));
     }
 }
