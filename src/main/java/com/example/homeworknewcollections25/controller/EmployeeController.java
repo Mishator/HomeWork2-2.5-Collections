@@ -30,7 +30,7 @@ public class EmployeeController {
         return employeeService.add(firstName, lastName);
     }
 
-    @GetMapping("/get")
+    @GetMapping("/find")
     public Employee findEmployee(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.find(firstName, lastName);
     }
@@ -40,6 +40,7 @@ public class EmployeeController {
         return employeeService.remove(firstName, lastName);
     }
 
+    @GetMapping("/getAll")
     public List<Employee> getEmployees() {
         return employeeService.getAll();
     }
