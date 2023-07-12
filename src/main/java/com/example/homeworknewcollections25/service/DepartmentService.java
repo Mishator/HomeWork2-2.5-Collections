@@ -19,7 +19,16 @@ public class DepartmentService {
     public Employee withMaxSalary(Integer departmentId) {
         List<Employee> employees = employeeService.getAll();
         return employees.stream()
+                .filter(e -> e.getDepartmentId() == departmentId)
                 .max(Comparator.comparing(Employee::getSalary))
+                .orElseThrow(() -> new EmployeeNotFoundException("Сотрудник не найден"));
+    }
+
+    public Employee withMinSalary(Integer departmentId) {
+        List<Employee> employees = employeeService.getAll();
+        return employees.stream()
+                .filter(e -> e.getDepartmentId() == departmentId)
+                .min(Comparator.comparing(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("Сотрудник не найден"));
     }
 }
