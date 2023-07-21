@@ -15,14 +15,14 @@ public class EmployeeService {
     private final List<Employee> employees = new ArrayList<>();
     private final int MAX_SIZE = 4;
 
-    public EmployeeService() {
-        employees.add(new Employee("Андрей", "Аршавин", 1, 50000));
-        employees.add(new Employee("Александр", "Кержаков", 1, 50000));
-        employees.add(new Employee("Владислав", "Радимов", 1, 75000));
-        employees.add(new Employee("Сергей", "Семак", 2, 86000));
-        employees.add(new Employee("Вячеслав", "Малафеев", 2, 98000));
-        employees.add(new Employee("Златан", "Ибрагимович", 4, 155999));
-    }
+  //  public EmployeeService() {
+    //    employees.add(new Employee("Андрей", "Аршавин", 1, 50000));
+    //  employees.add(new Employee("Александр", "Кержаков", 1, 50000));
+    //    employees.add(new Employee("Владислав", "Радимов", 1, 75000));
+    //    employees.add(new Employee("Сергей", "Семак", 2, 86000));
+    //    employees.add(new Employee("Вячеслав", "Малафеев", 2, 98000));
+    //    employees.add(new Employee("Златан", "Ибрагимович", 4, 155999));
+   // }
 
     public Employee add(String firstName, String lastName) {
         if (employees.size() >= MAX_SIZE) {
