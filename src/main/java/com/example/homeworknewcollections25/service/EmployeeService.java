@@ -30,6 +30,7 @@ public class EmployeeService {
     public Employee add(String firstName, String lastName) {
 
         checkUpperCase(firstName, lastName);
+        checkAlpha(firstName, lastName);
 
         if (employees.size() >= MAX_SIZE) {
             throw new EmployeeStorageIsFullException("Массив сотрудников переполнен");
@@ -53,6 +54,16 @@ public class EmployeeService {
 
         if (!(lastName.equals(capitalizeLastName))) {
             throw new InvalidNameException("Фамилия начинается не с заглавной буквы");
+        }
+    }
+
+    private void checkAlpha(String firstName, String lastName) {
+        if (!StringUtils.isAlpha(firstName)) {
+            throw new InvalidNameException("Имя содержит запрещённые символы");
+        }
+
+        if (!StringUtils.isAlpha(lastName)) {
+            throw new InvalidNameException("Фамилия содержит запрещённые символы");
         }
     }
 
