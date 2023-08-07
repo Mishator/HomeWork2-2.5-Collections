@@ -16,36 +16,28 @@ public class EmployeeService {
     private final List<Employee> employees = new ArrayList<>();
     private final int MAX_SIZE = 4;
 
-      public EmployeeService() {
-          employees.addAll(List.of(
-                          new Employee("Андрей", "Аршавин", 1, 50000),
-                          new Employee("Александр", "Кержаков", 1, 50000),
-                          new Employee("Владислав", "Радимов", 1, 75000),
-                          new Employee("Сергей", "Семак", 2, 86000),
-                          new Employee("Вячеслав", "Малафеев", 2, 98000),
-                          new Employee("Златан", "Ибрагимович", 4, 155999)
-                          )
-          );
-     }
-
-
     public Employee add(String firstName, String lastName) {
 
         checkUpperCase(firstName, lastName);
         checkAlpha(firstName, lastName);
+
         if (employees.size() >= MAX_SIZE) {
             throw new EmployeeStorageIsFullException("Массив сотрудников переполнен");
         }
+
         Employee newEmployee = new Employee(firstName, lastName);
+
         if (employees.contains(newEmployee)) {
             throw new EmployeeAlreadyAddedException("Сотрудник " + newEmployee + " уже существует");
         }
+
         employees.add(newEmployee);
         return newEmployee;
     }
     private void checkUpperCase(String firstName, String lastName) {
         String capitalizeFirstName = StringUtils.capitalize(firstName);
         String capitalizeLastName = StringUtils.capitalize(lastName);
+
         if (!(firstName.equals(capitalizeFirstName))) {
             throw new InvalidNameException("Имя начинается не с заглавной буквы");
         }
