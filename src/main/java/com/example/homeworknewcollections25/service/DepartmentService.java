@@ -46,14 +46,12 @@ public class DepartmentService {
                 .collect(Collectors.groupingBy(Employee::getDepartmentId, Collectors.toList()));
     }
 
-    @GetMapping("{id}/employees")
     public List<Employee> getEmployeesByDepId(int id) {
         return employeeService.getAll().stream()
                 .filter(employee -> employee.getDepartmentId() == id)
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("{id}/salary/sum")
     public double getSalarySumByDepId(int id) {
         return employeeService.getAll().stream()
                 .filter(employee -> employee.getDepartmentId() == id)
@@ -61,7 +59,6 @@ public class DepartmentService {
                 .sum();
     }
 
-    @GetMapping("{id}/salary/max")
     public double getMaxSalaryByDepId(int id) {
         return employeeService.getAll().stream()
                 .filter(employee -> employee.getDepartmentId() == id)
@@ -70,7 +67,6 @@ public class DepartmentService {
                 .getAsDouble();
     }
 
-    @GetMapping("{id}/salary/min")
     public double getMinSalaryByDepId(int id) {
         return employeeService.getAll().stream()
                 .filter(employee -> employee.getDepartmentId() == id)

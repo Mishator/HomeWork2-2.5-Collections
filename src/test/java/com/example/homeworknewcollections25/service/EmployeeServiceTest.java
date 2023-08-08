@@ -99,7 +99,6 @@ class EmployeeServiceTest {
 
         assertEquals(expectedErrorMessage, exception.getMessage());
 
-        cleanEmployees();
 
 
     }
@@ -124,7 +123,7 @@ class EmployeeServiceTest {
 
     private void fullEmployees() {
         employeeService.add(FIRST_NAME_1, LAST_NAME_1);
-        employeeService.add("Andrey", "Arshavin");
+        employeeService.add("Andreyy", "Arshavinn");
     }
 
     private void cleanEmployees() {
