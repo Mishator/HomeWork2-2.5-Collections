@@ -341,5 +341,7 @@ class DepartmentServiceTest {
         assertNotEquals(departmentId1, departmentId33);
         verify(employeeService).getAll();
         verifyNoMoreInteractions(employeeService);
+
+        System.out.println();
     }
 }

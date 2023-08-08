@@ -73,5 +73,8 @@ public class DepartmentService {
                 .mapToDouble(Employee::getSalary)
                 .min()
                 .getAsDouble();
+
+
     }
+
 }
